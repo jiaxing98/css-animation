@@ -1,0 +1,29 @@
+.banner {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #000;
+  z-index: -1;
+}
+
+h1 {
+  font-family: 'Hallowed Grounds';
+  font-size: 9em;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-image: url('src/assets/images/ink/background.jpg');
+  z-index: -2;
+
+  mask-image: url('src/assets/gifs/ink/ink.gif');
+  mask-size: cover;
+  mask-position: center;
+}
