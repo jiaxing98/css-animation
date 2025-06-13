@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PlayPauseInfiniteSliderIndexRouteImport } from './routes/play-pause-infinite-slider/index'
 import { Route as R3dSliderIndexRouteImport } from './routes/3d-slider/index'
 
 const IndexRoute = IndexRouteImport.update({
@@ -17,6 +18,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlayPauseInfiniteSliderIndexRoute =
+  PlayPauseInfiniteSliderIndexRouteImport.update({
+    id: '/play-pause-infinite-slider/',
+    path: '/play-pause-infinite-slider/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const R3dSliderIndexRoute = R3dSliderIndexRouteImport.update({
   id: '/3d-slider/',
   path: '/3d-slider/',
@@ -26,27 +33,31 @@ const R3dSliderIndexRoute = R3dSliderIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/3d-slider': typeof R3dSliderIndexRoute
+  '/play-pause-infinite-slider': typeof PlayPauseInfiniteSliderIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/3d-slider': typeof R3dSliderIndexRoute
+  '/play-pause-infinite-slider': typeof PlayPauseInfiniteSliderIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/3d-slider/': typeof R3dSliderIndexRoute
+  '/play-pause-infinite-slider/': typeof PlayPauseInfiniteSliderIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/3d-slider'
+  fullPaths: '/' | '/3d-slider' | '/play-pause-infinite-slider'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/3d-slider'
-  id: '__root__' | '/' | '/3d-slider/'
+  to: '/' | '/3d-slider' | '/play-pause-infinite-slider'
+  id: '__root__' | '/' | '/3d-slider/' | '/play-pause-infinite-slider/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R3dSliderIndexRoute: typeof R3dSliderIndexRoute
+  PlayPauseInfiniteSliderIndexRoute: typeof PlayPauseInfiniteSliderIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +67,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play-pause-infinite-slider/': {
+      id: '/play-pause-infinite-slider/'
+      path: '/play-pause-infinite-slider'
+      fullPath: '/play-pause-infinite-slider'
+      preLoaderRoute: typeof PlayPauseInfiniteSliderIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/3d-slider/': {
@@ -71,6 +89,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R3dSliderIndexRoute: R3dSliderIndexRoute,
+  PlayPauseInfiniteSliderIndexRoute: PlayPauseInfiniteSliderIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
