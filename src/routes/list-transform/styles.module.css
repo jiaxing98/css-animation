@@ -1,0 +1,56 @@
+.banner-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding: 2em;
+  background-color: #1e1e1e;
+}
+
+.list {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+.list .item {
+  width: 200px;
+  aspect-ratio: 1 / 2;
+  transition: 0.5s;
+  filter: brightness(0);
+}
+
+.list .item:hover {
+  filter: brightness(1);
+  transform: translateZ(200px);
+}
+
+.list .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.list .item:hover + * {
+  filter: brightness(0.6);
+  transform: translateZ(150px) rotateY(40deg);
+}
+
+.list .item:hover + * + * {
+  filter: brightness(0.4);
+  transform: translateZ(70px) rotateY(20deg);
+}
+
+.list .item:has(+ *:hover) {
+  filter: brightness(0.6);
+  transform: translateZ(150px) rotateY(-40deg);
+}
+
+.list .item:has(+ * + *:hover) {
+  filter: brightness(0.4);
+  transform: translateZ(70px) rotateY(-20deg);
+}

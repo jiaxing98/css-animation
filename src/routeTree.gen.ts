@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PlayPauseInfiniteSliderIndexRouteImport } from './routes/play-pause-infinite-slider/index'
+import { Route as ListTransformIndexRouteImport } from './routes/list-transform/index'
 import { Route as InkIndexRouteImport } from './routes/ink/index'
 import { Route as R3dSliderIndexRouteImport } from './routes/3d-slider/index'
 import { Route as R3dRotationIndexRouteImport } from './routes/3d-rotation/index'
@@ -26,6 +27,11 @@ const PlayPauseInfiniteSliderIndexRoute =
     path: '/play-pause-infinite-slider/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ListTransformIndexRoute = ListTransformIndexRouteImport.update({
+  id: '/list-transform/',
+  path: '/list-transform/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InkIndexRoute = InkIndexRouteImport.update({
   id: '/ink/',
   path: '/ink/',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/3d-rotation': typeof R3dRotationIndexRoute
   '/3d-slider': typeof R3dSliderIndexRoute
   '/ink': typeof InkIndexRoute
+  '/list-transform': typeof ListTransformIndexRoute
   '/play-pause-infinite-slider': typeof PlayPauseInfiniteSliderIndexRoute
 }
 export interface FileRoutesByTo {
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/3d-rotation': typeof R3dRotationIndexRoute
   '/3d-slider': typeof R3dSliderIndexRoute
   '/ink': typeof InkIndexRoute
+  '/list-transform': typeof ListTransformIndexRoute
   '/play-pause-infinite-slider': typeof PlayPauseInfiniteSliderIndexRoute
 }
 export interface FileRoutesById {
@@ -62,6 +70,7 @@ export interface FileRoutesById {
   '/3d-rotation/': typeof R3dRotationIndexRoute
   '/3d-slider/': typeof R3dSliderIndexRoute
   '/ink/': typeof InkIndexRoute
+  '/list-transform/': typeof ListTransformIndexRoute
   '/play-pause-infinite-slider/': typeof PlayPauseInfiniteSliderIndexRoute
 }
 export interface FileRouteTypes {
@@ -71,6 +80,7 @@ export interface FileRouteTypes {
     | '/3d-rotation'
     | '/3d-slider'
     | '/ink'
+    | '/list-transform'
     | '/play-pause-infinite-slider'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -78,6 +88,7 @@ export interface FileRouteTypes {
     | '/3d-rotation'
     | '/3d-slider'
     | '/ink'
+    | '/list-transform'
     | '/play-pause-infinite-slider'
   id:
     | '__root__'
@@ -85,6 +96,7 @@ export interface FileRouteTypes {
     | '/3d-rotation/'
     | '/3d-slider/'
     | '/ink/'
+    | '/list-transform/'
     | '/play-pause-infinite-slider/'
   fileRoutesById: FileRoutesById
 }
@@ -93,6 +105,7 @@ export interface RootRouteChildren {
   R3dRotationIndexRoute: typeof R3dRotationIndexRoute
   R3dSliderIndexRoute: typeof R3dSliderIndexRoute
   InkIndexRoute: typeof InkIndexRoute
+  ListTransformIndexRoute: typeof ListTransformIndexRoute
   PlayPauseInfiniteSliderIndexRoute: typeof PlayPauseInfiniteSliderIndexRoute
 }
 
@@ -110,6 +123,13 @@ declare module '@tanstack/react-router' {
       path: '/play-pause-infinite-slider'
       fullPath: '/play-pause-infinite-slider'
       preLoaderRoute: typeof PlayPauseInfiniteSliderIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/list-transform/': {
+      id: '/list-transform/'
+      path: '/list-transform'
+      fullPath: '/list-transform'
+      preLoaderRoute: typeof ListTransformIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ink/': {
@@ -141,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   R3dRotationIndexRoute: R3dRotationIndexRoute,
   R3dSliderIndexRoute: R3dSliderIndexRoute,
   InkIndexRoute: InkIndexRoute,
+  ListTransformIndexRoute: ListTransformIndexRoute,
   PlayPauseInfiniteSliderIndexRoute: PlayPauseInfiniteSliderIndexRoute,
 }
 export const routeTree = rootRouteImport
