@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PlayPauseInfiniteSliderIndexRouteImport } from './routes/play-pause-infinite-slider/index'
 import { Route as ListTransformIndexRouteImport } from './routes/list-transform/index'
 import { Route as InkIndexRouteImport } from './routes/ink/index'
+import { Route as GlassmorphismIndexRouteImport } from './routes/glassmorphism/index'
 import { Route as R3dSliderIndexRouteImport } from './routes/3d-slider/index'
 import { Route as R3dRotationIndexRouteImport } from './routes/3d-rotation/index'
 
@@ -37,6 +38,11 @@ const InkIndexRoute = InkIndexRouteImport.update({
   path: '/ink/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GlassmorphismIndexRoute = GlassmorphismIndexRouteImport.update({
+  id: '/glassmorphism/',
+  path: '/glassmorphism/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R3dSliderIndexRoute = R3dSliderIndexRouteImport.update({
   id: '/3d-slider/',
   path: '/3d-slider/',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/3d-rotation': typeof R3dRotationIndexRoute
   '/3d-slider': typeof R3dSliderIndexRoute
+  '/glassmorphism': typeof GlassmorphismIndexRoute
   '/ink': typeof InkIndexRoute
   '/list-transform': typeof ListTransformIndexRoute
   '/play-pause-infinite-slider': typeof PlayPauseInfiniteSliderIndexRoute
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/3d-rotation': typeof R3dRotationIndexRoute
   '/3d-slider': typeof R3dSliderIndexRoute
+  '/glassmorphism': typeof GlassmorphismIndexRoute
   '/ink': typeof InkIndexRoute
   '/list-transform': typeof ListTransformIndexRoute
   '/play-pause-infinite-slider': typeof PlayPauseInfiniteSliderIndexRoute
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/3d-rotation/': typeof R3dRotationIndexRoute
   '/3d-slider/': typeof R3dSliderIndexRoute
+  '/glassmorphism/': typeof GlassmorphismIndexRoute
   '/ink/': typeof InkIndexRoute
   '/list-transform/': typeof ListTransformIndexRoute
   '/play-pause-infinite-slider/': typeof PlayPauseInfiniteSliderIndexRoute
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/'
     | '/3d-rotation'
     | '/3d-slider'
+    | '/glassmorphism'
     | '/ink'
     | '/list-transform'
     | '/play-pause-infinite-slider'
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/'
     | '/3d-rotation'
     | '/3d-slider'
+    | '/glassmorphism'
     | '/ink'
     | '/list-transform'
     | '/play-pause-infinite-slider'
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/3d-rotation/'
     | '/3d-slider/'
+    | '/glassmorphism/'
     | '/ink/'
     | '/list-transform/'
     | '/play-pause-infinite-slider/'
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R3dRotationIndexRoute: typeof R3dRotationIndexRoute
   R3dSliderIndexRoute: typeof R3dSliderIndexRoute
+  GlassmorphismIndexRoute: typeof GlassmorphismIndexRoute
   InkIndexRoute: typeof InkIndexRoute
   ListTransformIndexRoute: typeof ListTransformIndexRoute
   PlayPauseInfiniteSliderIndexRoute: typeof PlayPauseInfiniteSliderIndexRoute
@@ -139,6 +152,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InkIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/glassmorphism/': {
+      id: '/glassmorphism/'
+      path: '/glassmorphism'
+      fullPath: '/glassmorphism'
+      preLoaderRoute: typeof GlassmorphismIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/3d-slider/': {
       id: '/3d-slider/'
       path: '/3d-slider'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R3dRotationIndexRoute: R3dRotationIndexRoute,
   R3dSliderIndexRoute: R3dSliderIndexRoute,
+  GlassmorphismIndexRoute: GlassmorphismIndexRoute,
   InkIndexRoute: InkIndexRoute,
   ListTransformIndexRoute: ListTransformIndexRoute,
   PlayPauseInfiniteSliderIndexRoute: PlayPauseInfiniteSliderIndexRoute,
