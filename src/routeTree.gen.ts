@@ -14,6 +14,7 @@ import { Route as PlayPauseInfiniteSliderIndexRouteImport } from './routes/play-
 import { Route as ListTransformIndexRouteImport } from './routes/list-transform/index'
 import { Route as InkIndexRouteImport } from './routes/ink/index'
 import { Route as GlassmorphismIndexRouteImport } from './routes/glassmorphism/index'
+import { Route as ECommerceIndexRouteImport } from './routes/e-commerce/index'
 import { Route as R3dSliderIndexRouteImport } from './routes/3d-slider/index'
 import { Route as R3dRotationIndexRouteImport } from './routes/3d-rotation/index'
 
@@ -43,6 +44,11 @@ const GlassmorphismIndexRoute = GlassmorphismIndexRouteImport.update({
   path: '/glassmorphism/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ECommerceIndexRoute = ECommerceIndexRouteImport.update({
+  id: '/e-commerce/',
+  path: '/e-commerce/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R3dSliderIndexRoute = R3dSliderIndexRouteImport.update({
   id: '/3d-slider/',
   path: '/3d-slider/',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/3d-rotation': typeof R3dRotationIndexRoute
   '/3d-slider': typeof R3dSliderIndexRoute
+  '/e-commerce': typeof ECommerceIndexRoute
   '/glassmorphism': typeof GlassmorphismIndexRoute
   '/ink': typeof InkIndexRoute
   '/list-transform': typeof ListTransformIndexRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/3d-rotation': typeof R3dRotationIndexRoute
   '/3d-slider': typeof R3dSliderIndexRoute
+  '/e-commerce': typeof ECommerceIndexRoute
   '/glassmorphism': typeof GlassmorphismIndexRoute
   '/ink': typeof InkIndexRoute
   '/list-transform': typeof ListTransformIndexRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/3d-rotation/': typeof R3dRotationIndexRoute
   '/3d-slider/': typeof R3dSliderIndexRoute
+  '/e-commerce/': typeof ECommerceIndexRoute
   '/glassmorphism/': typeof GlassmorphismIndexRoute
   '/ink/': typeof InkIndexRoute
   '/list-transform/': typeof ListTransformIndexRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/'
     | '/3d-rotation'
     | '/3d-slider'
+    | '/e-commerce'
     | '/glassmorphism'
     | '/ink'
     | '/list-transform'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/'
     | '/3d-rotation'
     | '/3d-slider'
+    | '/e-commerce'
     | '/glassmorphism'
     | '/ink'
     | '/list-transform'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/'
     | '/3d-rotation/'
     | '/3d-slider/'
+    | '/e-commerce/'
     | '/glassmorphism/'
     | '/ink/'
     | '/list-transform/'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R3dRotationIndexRoute: typeof R3dRotationIndexRoute
   R3dSliderIndexRoute: typeof R3dSliderIndexRoute
+  ECommerceIndexRoute: typeof ECommerceIndexRoute
   GlassmorphismIndexRoute: typeof GlassmorphismIndexRoute
   InkIndexRoute: typeof InkIndexRoute
   ListTransformIndexRoute: typeof ListTransformIndexRoute
@@ -159,6 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GlassmorphismIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/e-commerce/': {
+      id: '/e-commerce/'
+      path: '/e-commerce'
+      fullPath: '/e-commerce'
+      preLoaderRoute: typeof ECommerceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/3d-slider/': {
       id: '/3d-slider/'
       path: '/3d-slider'
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R3dRotationIndexRoute: R3dRotationIndexRoute,
   R3dSliderIndexRoute: R3dSliderIndexRoute,
+  ECommerceIndexRoute: ECommerceIndexRoute,
   GlassmorphismIndexRoute: GlassmorphismIndexRoute,
   InkIndexRoute: InkIndexRoute,
   ListTransformIndexRoute: ListTransformIndexRoute,

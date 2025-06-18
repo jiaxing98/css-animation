@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
 
+import { SmoothScrolling } from './components/_shared/SmoothScrolling.tsx'
 import reportWebVitals from './reportWebVitals.ts'
 import './styles.css'
 
@@ -31,7 +32,9 @@ if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <SmoothScrolling>
+        <RouterProvider router={router} />
+      </SmoothScrolling>
     </StrictMode>
   )
 }
