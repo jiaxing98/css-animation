@@ -1,0 +1,49 @@
+.scroll-area {
+  width: 100vw;
+  height: 200vh;
+  background-color: #e2e8f0;
+}
+
+.sprite-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.sprite-container div:nth-child(odd) {
+  width: 160px;
+  height: 160px;
+  background-image: var(--url);
+  background-size: 320px 160px;
+  background-position: 0px 0%;
+  animation: sprite 0.75s steps(2) infinite;
+}
+
+.sprite-container div:nth-child(even) {
+  width: 160px;
+  height: 160px;
+  background-image: var(--url);
+  background-size: 320px 160px;
+  animation: sprite-reverse 0.75s steps(2) infinite;
+}
+
+@keyframes sprite {
+  from {
+    background-position: 0px 0%;
+  }
+  to {
+    background-position: -320px 0%;
+  }
+}
+
+@keyframes sprite-reverse {
+  from {
+    background-position: 320px 0%;
+  }
+  to {
+    background-position: 0px 0%;
+  }
+}
